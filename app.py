@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 app=Flask(__name__)
-pickle_in = open("classifier.pkl","rb")
+pickle_in = open("model.pkl","rb")
 output=pickle.load(pickle_in)
 
 @app.route('/find_product', methods=['POST'])
