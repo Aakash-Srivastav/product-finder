@@ -3,6 +3,7 @@ import pickle
 import pandas as pd
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
+import os
 
 app=Flask(__name__)
 pickle_in = open("model.pkl","rb")
@@ -20,5 +21,6 @@ def handle_text_input():
     
     return jsonify(output(input_text)), 200
 
-if __name__ == '__main__':
-    app.run(debug=True, port=10000, host='0.0.0.0')
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Use Render's PORT or default to 10000
+    app.run(debug=True, host="0.0.0.0", port=port)
