@@ -23,4 +23,4 @@ def handle_text_input():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))  # Use Render's PORT or default to 10000
-    app.run(debug=True, host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=port)
