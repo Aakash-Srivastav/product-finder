@@ -4,9 +4,10 @@ import pandas as pd
 # Load the model
 model = SentenceTransformer('all-MiniLM-L6-v2') 
 
-def prod_map(query):
+def prod_map(query, file_name):
+    global model
     if query != '' and query is not None:
-        data = pd.read_excel("home-depot_data_cleaned.xlsx")
+        data = pd.read_excel(file_name)
 
         title_list = data['title'].tolist()
 
@@ -28,5 +29,3 @@ def prod_map(query):
         return data['product_id'][best_match_idx]
     else:
         return(print('Please enter valid product to search...'))
-
-prod_map('prevents transmission fluid from leaking out of the transmission where the output shaft extends from the transmission housing')
